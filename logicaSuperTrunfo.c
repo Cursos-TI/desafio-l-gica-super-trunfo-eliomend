@@ -99,29 +99,97 @@ int main() {
     printf("Super Poder da Carta 2: %.2f\n", superPoder2);
 
     //comparar atributo por atributo
+    //menu interativo
 
-    printf("Comparando os pontos das duas cidades:\n");
-    printf("se o resultado for 1 = a primeira cidade tem mais pontos, se for 0 = a segunda cidade tem mais pontos\n");
-    printf("populacao1 > populacao2: %d\n", populacao1 > populacao2);
-    printf("area1 > area2: %d\n", area1 > area2);
-    printf("pib1 > pib2: %d\n", pib1 > pib2);
-    printf("pontos1 > pontos2: %d\n", pontos1 > pontos2);
-    printf("densidade1 < densidade2: %d\n", densidade1 < densidade2);
-    printf("pib_per_capita1 > pib_per_capita2: %d\n", pib_per_capita1 > pib_per_capita2);
-    printf("superPoder1 > superPoder2: %d\n", superPoder1 > superPoder2);
+    printf("\nAgora vamos comparar os atributos das duas cidades! Escolha o atributo que deseja comparar:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Pontos Turisticos\n");
+    printf("5 - Densidade Populacional\n");
 
-    //comparando atributos
+    int escolha;
+    scanf("%d", &escolha);
 
-    printf("Comparação das cartas:\n");
-    printf("A carta 1 tem a população de: %lu\n", populacao1);
-    printf("A carta 2 tem a população: %lu\n", populacao2);
-
-    if (populacao1 > populacao2) {
-        printf("A carta 1 tem mais habitantes que a carta 2\n");
+    //cabeçalho da resposdta
+    printf("\nComparando os atributos das duas cidades: %s e %s\n", cidade1, cidade2);
+    printf("O Atributo escolhido foi: %d", escolha);
+    if (escolha == 1) {
+        printf(" - População\n");
+    } else if (escolha == 2) {
+        printf(" - Área\n");
+    } else if (escolha == 3) {
+        printf(" - PIB\n");
+    } else if (escolha == 4) {
+        printf(" - Pontos Turisticos\n");
+    } else if (escolha == 5) {
+        printf(" - Densidade Populacional\n");
     } else {
-        printf("A carta 2 tem mais habitantes que a carta 1\n");
+        printf("Opção inválida\n");
     }
 
+
+    //fazendo a comparação com base na escolha do usuário
+    switch (escolha) {
+        case 1:
+            if (populacao1 > populacao2) {
+                printf("A cidade %s tem população de %lu habitantes, enquanto a cidade %s tem população de %lu habitantes\n", cidade1, populacao1, cidade2, populacao2);
+                printf("A cidade %s ganhou! Pois tem maior população que a cidade %s\n", cidade1, cidade2);
+            } else if (populacao1 < populacao2) {
+                printf("A cidade %s tem população de %lu habitantes, enquanto a cidade %s tem população de %lu habitantes\n", cidade2, populacao2, cidade1, populacao1);
+                printf("A cidade %s ganhou! Pois tem maior população que a cidade %s\n", cidade2, cidade1);
+            } else {
+                printf("As duas cidades têm a mesma população\n");
+            }
+            break;
+        case 2:
+            if (area1 > area2) {
+                printf("A cidade %s tem área de %.2f km^2, enquanto a cidade %s tem área de %.2f km^2\n", cidade1, area1, cidade2, area2);
+                printf("A cidade %s ganhou! Pois tem maior área que a cidade %s\n", cidade1, cidade2);
+            } else if (area1 < area2) {
+                printf("A cidade %s tem área de %.2f km^2, enquanto a cidade %s tem área de %.2f km^2\n", cidade2, area2, cidade1, area1);
+                printf("A cidade %s ganhou! Pois tem maior área que a cidade %s\n", cidade2, cidade1);
+            } else {
+                printf("As duas cidades têm a mesma área\n");
+            }
+            break;
+        case 3:
+            if (pib1 > pib2) {
+                printf("A cidade %s tem PIB de %.2f milhões de reais, enquanto a cidade %s tem PIB de %.2f milhões de reais\n", cidade1, pib1, cidade2, pib2);
+                printf("A cidade %s ganhou! Pois tem maior PIB que a cidade %s\n", cidade1, cidade2);
+            } else if (pib1 < pib2) {
+                printf("A cidade %s tem PIB de %.2f milhões de reais, enquanto a cidade %s tem PIB de %.2f milhões de reais\n", cidade2, pib2, cidade1, pib1);
+                printf("A cidade %s ganhou! Pois tem maior PIB que a cidade %s\n", cidade2, cidade1);
+            } else {
+                printf("As duas cidades têm o mesmo PIB\n");
+            }
+            break;
+        case 4:
+            if (pontos1 > pontos2) {
+                printf("A cidade %s tem %d pontos turísticos, enquanto a cidade %s tem %d pontos turísticos\n", cidade1, pontos1, cidade2, pontos2);
+                printf("A cidade %s ganhou! Pois tem mais pontos turísticos que a cidade %s\n", cidade1, cidade2);
+            } else if (pontos1 < pontos2) {
+                printf("A cidade %s tem %d pontos turísticos, enquanto a cidade %s tem %d pontos turísticos\n", cidade2, pontos2, cidade1, pontos1);
+                printf("A cidade %s ganhou! Pois tem mais pontos turísticos que a cidade %s\n", cidade2, cidade1);
+            } else {
+                printf("As duas cidades têm o mesmo número de pontos turísticos\n");
+            }
+            break;
+        case 5:
+            if (densidade1 < densidade2) {
+                printf("A cidade %s tem densidade populacional de %.2f habitantes por km^2, enquanto a cidade %s tem densidade populacional de %.2f habitantes por km^2\n", cidade1, densidade1, cidade2, densidade2);
+                printf("A cidade %s ganhou! Pois tem menor densidade populacional que a cidade %s\n", cidade1, cidade2);
+            } else if (densidade1 > densidade2) {
+                printf("A cidade %s tem densidade populacional de %.2f habitantes por km^2, enquanto a cidade %s tem densidade populacional de %.2f habitantes por km^2\n", cidade2, densidade2, cidade1, densidade1);
+                printf("A cidade %s ganhou! Pois tem menor densidade populacional que a cidade %s\n", cidade2, cidade1);
+            } else {
+                printf("As duas cidades têm a mesma densidade populacional\n");
+            }
+            break;
+        default:
+            printf("Opção inválida\n");
+            break;
+    }
 
     return 0;
 }
